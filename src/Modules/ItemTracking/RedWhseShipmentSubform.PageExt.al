@@ -31,7 +31,7 @@ pageextension 50701 "TFB Auto Whse. Shipment" extends "Warehouse Shipment"
 
                     Line.SetRange("No.", rec."No.");
 
-                    If Line.Findset(false, false) then
+                    If Line.Findset(false) then
                         repeat
 
                             if not ItemTrackingAPI.GetItemTrackingFromWarehouseShipmentLine(Line, TempTrackingSpecification) then
@@ -40,7 +40,7 @@ pageextension 50701 "TFB Auto Whse. Shipment" extends "Warehouse Shipment"
                             ItemTrackingAPI.RetrieveItemTrackingSummary(TempTrackingSpecification, TempEntrySummary, TempReservationEntry);
 
                             If not TempEntrySummary.IsEmpty() then begin
-                                TempEntrySummary.FindSet(false, false);
+                                TempEntrySummary.FindSet(false);
                                 repeat
                                     TempTrackingSpecification."Lot No." := TempEntrySummary."Lot No.";
                                     //TODO HANDLE MULTIPLE LOTS
